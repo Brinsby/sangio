@@ -1,0 +1,38 @@
+{
+  "name": "sangio",
+  "version": "1.0.0",
+  "description": "A site for connecting people to things they like",
+  "main": "server.js",
+  "dependencies": {
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "babel-plugin-react-transform": "^2.0.2",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.22.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "babel-runtime": "^6.22.0",
+    "body-parser": "^1.16.0",
+    "express": "^4.14.0",
+    "express-stormpath": "^3.1.9",
+    "stormpath": "^0.19.1",
+    "webpack": "^1.14.0"
+  },
+  "devDependencies": {
+    "webpack-dev-middleware": "^1.9.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blaxened/sangio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blaxened/sangio/issues"
+  },
+  "homepage": "https://github.com/blaxened/sangio#readme"
+}
