@@ -1,20 +1,36 @@
+var path = require('path');
 var express = require('express');
-var stormpathc = require('express');
+var stormpath = require('express-stormpath');
+var webpack = require('webpack');
+var config = require('./webpack.config');
 
 var app = express();
+var compiler = webpack('config');
 
-app.use(stormpath.init (app, {
+app.use(require('webpack-dev-middleware')(compiler, {
+	noInfo: true,
+	publicPath: config.output.publicPath
+}));
+
+app.use(stormpath.init(app, {
 	web: {
-		produces: ['application/json']	
+		produces: ['application/json']
 	}
 }));
 
-app.on('stormpath.ready', function() {
-	app.listen(3000, 'localhost', function(err) {
-		if (err) {
-			return console.error(err);
-		}
+app.get('/css/bootstrap.min.css', function (req, res) {
+	res.sendFile(path.join(__dirname, 'build/css/bootstrap.min.css'));
+});
 
-		console.log("Listening at http://localhost:3000");
-	});
+app.get('*', function (req, res) {
+	res.sendFile(path.join(__dirname, 'build/index.html'));
+});
+
+app.on('stormpath.ready', function () {
+  app.listen(3000, 'localhost', function (err) {
+    if (err) {
+      return console.error(err);
+    }
+    console.log('Listening at http://localhost:3000');
+  });
 });
